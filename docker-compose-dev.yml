@@ -1,0 +1,25 @@
+#* Docker Compose version
+version: '3.9'
+
+#* All services to be used will be declared
+services:
+
+  #* Service name
+  front-server:
+    #* Image to use
+    image: node:18.15.0
+    init: true
+    #* Directory where you will work
+    working_dir: /home/dev
+    #* Container name
+    container_name: mp-certification-checkpro
+    command: sh -c "npm i -g nodemon && npm i && npm run start"
+    #* Port exhibition
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+    #* Volume where information persists
+    volumes:
+      - .:/home/dev
+    restart: unless-stopped
