@@ -5,6 +5,8 @@ const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 var app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
@@ -90,4 +92,4 @@ app.post('/webhook', function (req, res) {
     res.status(200).send('OK');
 });
 
-app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
